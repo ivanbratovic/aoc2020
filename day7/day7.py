@@ -8,28 +8,20 @@ def bag_rules_from_file(filepath : str):
     placement represented as a dictionary
     """
     rules = {}
-    lines = []
-    # First get the bag names and counts only
+    # Get the bag names and counts only
     with open(filepath, "r") as file:
         for line in file.readlines():
-            #line = line.strip().split(" bags contain ")
-            line = re.split(r"( bags contain | bags*, |bags*\.)", line.strip())
-            split = []
-            for i in range(len(line)-1):
-                if i % 2 == 0:
-                    split.append(line[i])
-            lines.append(split)
-    # Then build a dictionary
-    # - Key: bag name (e.g. light blue)
-    # - Value: bag name + count (e.g. ('dim crimson', 3))
-    for bags in lines:
-        top_bag = bags[0].strip()
-        rules.setdefault(top_bag, [])
-        for bag in bags[1:]:
-            if bag.strip() == "no other":
-                break
-            number, colour = int(bag[0]), bag[2:].strip()
-            rules[top_bag].append((colour, number))
+            line = re.split(r"( bags contain | bags*, | bags*\.)", line.strip())
+            top_bag = line[0]
+            inside_bags = line[2:-1:2]
+            # Build a dictionary
+            # - Key: bag name (e.g. 'light blue')
+            # - Value: bag name + count (e.g. ('dim crimson', 3))
+            rules.setdefault(top_bag, [])
+            for bag in inside_bags:
+                if bag == "no other":
+                    break
+                rules[top_bag].append((bag[2:], int(bag[0])))
     return rules
 
 def can_contain_gold(top : str, d : dict):
@@ -38,10 +30,7 @@ def can_contain_gold(top : str, d : dict):
     eventually contain a shiny gold bag.
     """
     for link in d[top]:
-        if link[0] == "shiny gold":
-            return True
-        possible = can_contain_gold(link[0], d)
-        if possible:
+        if link[0] == "shiny gold" or can_contain_gold(link[0], d):
             return True
     return False
 
@@ -52,12 +41,12 @@ def count_bags_within(bag : str, d : dict):
     """
     uncounted = [(bag, 1)]
     count = 0
+
     while len(uncounted) != 0:
         bag, n = uncounted.pop()
         for inside in d[bag]:
             count += inside[1] * n
-            inside = (inside[0], inside[1]*n)
-            uncounted.append(inside)
+            uncounted.append((inside[0], inside[1]*n))
     return count
 
 
