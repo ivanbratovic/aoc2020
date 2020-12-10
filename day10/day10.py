@@ -36,7 +36,7 @@ def main():
     """
     joltage =  ratings_from_file("input.txt")
     # Part 1
-    diff = np.diff([0] + joltage + [max(joltage)+3])
+    diff = np.diff([0] + joltage + [joltages[-1] + 3])
     counts = dict(zip(*np.unique(diff, return_counts=True)))
     print(counts[1] * counts[3])
     # Part 2
