@@ -17,14 +17,14 @@
 | 9      | :star::star: |
 | 10     | :star::star: |
 | 11     | :star::star: |
-| 12     |              |
-| 13     |              |
-| 14     |              |
-| 15     |              |
-| 16     |              |
-| 17     |              |
-| 18     |              |
-| 19     |              |
+| 12     | :star::star: |
+| 13     | :star::star: |
+| 14     | :star::star: |
+| 15     | :star::star: |
+| 16     | :star::star: |
+| 17     | :star::star: |
+| 18     | :star::star::earth_africa: |
+| 19     | :star::star: |
 | 20     |              |
 | 21     |              |
 | 22     |              |
