@@ -4,6 +4,10 @@
 
 ### Completion table
 
+:star: - 1 star
+:star::star: - 2 stars
+:earth_africa: - made it to the global leaderboard
+
 | Day    | Complete     |
 | ------ | ------------ |
 | 1      | :star::star: |
