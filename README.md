@@ -2,6 +2,8 @@
 *Ivan Bratović*
 ## My solutions repository
 
+Officially made it to **Day 19**!
+
 ### Completion table
 
  + :star: - 1 star
