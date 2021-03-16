@@ -4,7 +4,7 @@
 
 Officially made it to **Day 19**!
 
-
+Made it to the global leaderboard (203/75) on **Day 18**.
 
 ### Completion table
 
@@ -41,5 +41,5 @@ Officially made it to **Day 19**!
 | 24     |              |
 | 25     |              |
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxMTI2Mzc5MF19
+eyJoaXN0b3J5IjpbLTUzMTc2NDI5M119
 -->
