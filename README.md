@@ -36,7 +36,7 @@ Made it to the global leaderboard (203/75) on **Day 18**.
 | 19     | :star::star: |
 | 20     | :star:       |
 | 21     | :star::star: |
-| 22     |              |
+| 22     | :star::star: |
 | 23     |              |
 | 24     |              |
 | 25     |              |
