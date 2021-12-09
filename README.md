@@ -2,7 +2,7 @@
 *Ivan Bratović*
 ## My solutions repository
 
-Officially made it to **Day 19**!
+Officially made it to **Day 21**!
 
 Made it to the global leaderboard (203/75) on **Day 18**.
 
@@ -34,12 +34,9 @@ Made it to the global leaderboard (203/75) on **Day 18**.
 | 17     | :star::star: |
 | 18     | :star::star::earth_africa: |
 | 19     | :star::star: |
-| 20     |              |
-| 21     |              |
+| 20     | :star:       |
+| 21     | :star::star: |
 | 22     |              |
 | 23     |              |
 | 24     |              |
 | 25     |              |
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzMTc2NDI5M119
--->
