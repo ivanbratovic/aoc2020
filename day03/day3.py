@@ -29,11 +29,11 @@ def map_move(coords : np.array, map : np.ndarray, move : np.array):
         return coords, None
     return coords, map[tuple(coords.tolist())]
 
-def main():
+def main(file: str):
     """
     Main function. Contains primary logic.
     """
-    area_map =  map_from_file("input.txt")
+    area_map =  map_from_file(file)
     moves = list(map(np.array, [[1,1],[1,3],[1,5],[1,7],[2,1]]))
     
     product = 1
@@ -47,10 +47,16 @@ def main():
             if location == "#":
                 trees += 1
             coords, location = map_move(coords, area_map, move)
+        if move is moves[1]:
+            print("Part 1:", trees)
 
-        print(trees)
         product *= trees
         
-    print("\n"+str(product))
+    print("Part 2:", product)
 
-main()
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
+

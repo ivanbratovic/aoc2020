@@ -38,18 +38,18 @@ def valid_value(val, rules):
                     return True
     return False
 
-def main():
+def main(file: str):
     """
     Main function. Contains top-level logic.
     """
-    rules, ticket, others = tickets_from_file("input.txt")
+    rules, ticket, others = tickets_from_file(file)
     # Part 1
     s = 0
     for t in others:
         for val in t:
             if not valid_value(val, rules):
                 s += val
-    print(s)
+    print("Part 1:", s)
     # Part 2
     # Get valid tickets
     valid = []
@@ -98,6 +98,11 @@ def main():
                 for k in possibilities:
                     if field in possibilities[k]:
                         possibilities[k].remove(field)
-    print(prod)
+    print("Part 2:", prod)
 
-main()
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
+

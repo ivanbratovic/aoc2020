@@ -8,28 +8,21 @@ def passports_from_file(filepath : str):
     passports = []
     with open(filepath, "r") as file:
         d = {}
-        lines = file.readlines()
-        for line in lines:
-            if line.strip() == "":
+        for line in file.readlines():
+            line = line.strip()
+            if line == "":
                 passports.append(d)
                 d = {}
                 continue
-            for keyval in line.strip().split():
+            for keyval in line.split():
                 k, v = tuple(keyval.split(":"))
                 d[k] = v
         passports.append(d)
-    print("Read {} passports.".format(len(passports)))
+    #print(f"Read {len(passports)} passports.")
     return passports
 
 def str_num_between(num : str, low : int, high : int):
-    """
-    Checks if a given number is between the values
-    low and high. Boundaries are included.
-    """
-    val = int(num)
-    if val < low or val > high:
-        return False
-    return True
+    return int(num) in range(low, high+1)
 
 def valid(key : str, passport : dict):
     """
@@ -71,20 +64,29 @@ def valid(key : str, passport : dict):
     # print("valid")
     return True
 
-def main():
+def main(file: str):
     """
     Main function. Contains primary logic.
     """
-    passports =  passports_from_file("input.txt")
+    passports =  passports_from_file(file)
     count = len(passports)
     invalid = 0
+    invalid_part1 = 0
     for i, passport in enumerate(passports):
-        for key in ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"]:
-            if (key == "cid"):
-                continue # Ignore the cid key
-            if key not in passport.keys() or not valid(key, passport):
+        for key in ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]:
+            if key not in passport:
+                invalid_part1 += 1
+                break
+        for key in ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]:
+            if key not in passport or not valid(key, passport):
                 invalid += 1
                 break
-    print("  Valid: ",count-invalid,"\nInvalid: ",count, sep="")
+    print("Part 1:", count-invalid_part1)
+    print("Part 2:", count-invalid)
 
-main()
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
+

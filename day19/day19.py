@@ -55,11 +55,11 @@ def get_regex(rulenum: str, p2: bool=False):
             res.append("".join(get_regex(num, p2) for num in nums))
         return "(?:" + "|".join(res) + ")"
 
-def main():
+def main(file: str):
     """
     Main function. Contains top-level logic.
     """
-    words = words_from_file("input.txt")
+    words = words_from_file(file)
     rule_1 = get_regex("0")
     rule_2 = get_regex("0", True)
     # Part 1 and 2
@@ -70,6 +70,12 @@ def main():
             s1 += 1
         if re.fullmatch(rule_2, word):
             s2 += 1
-    print(s1, s2, sep="\n")
+    print("Part 1:", s1)
+    print("Part 2:", s2)
 
-main()
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
+

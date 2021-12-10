@@ -64,14 +64,21 @@ def simulate(active: set, num_iter: int, d4: bool):
         active = next_active
     print(len(active))
 
-def main():
+def main(file: str):
     """
     Main function. Contains top-level logic.
     """
-    active = instructions_from_file("input.txt")
+    active = instructions_from_file(file)
     # Part 1 - 3D
+    print("Part 1:", end=" ")
     simulate(active, 6, False)
     # Part 2 - with 4D
+    print("Part 2:", end=" ")
     simulate(active, 6, True)
 
-main()
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
+

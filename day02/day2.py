@@ -39,16 +39,20 @@ def valid_2(tpl : tuple):
         return 1
     return 0
 
-def main():
+def main(file: str):
     """
     Main function. Contains primary logic.
     """
     s1, s2 = 0, 0
-    for line in file_splitlines("input.txt"):
-        print(line)
+    for line in file_splitlines(file):
         s1 += valid_1(line)
         s2 += valid_2(line)
     print(s1)
     print(s2)
 
-main()
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
+

@@ -51,19 +51,20 @@ def count_bags_within(bag : str, d : dict):
 
 
 
-def main():
+def main(file: str):
     """
     Main function. Contains primary logic.
     """
-    rules =  bag_rules_from_file("input.txt")
+    rules =  bag_rules_from_file(file)
     # Part 1
-    s = 0
-    for k in rules.keys():
-        if can_contain_gold(k, rules):
-            s += 1
-    print(s)
+    print("Part 1:", sum([1 if can_contain_gold(k, rules) else 0 for k in rules]))
     # Part 2
-    print(count_bags_within("shiny gold", rules))
+    print("Part 2:", count_bags_within("shiny gold", rules))
 
 
-main()
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
+

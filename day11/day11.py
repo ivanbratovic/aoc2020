@@ -83,18 +83,23 @@ def iter_board(board: np.array, limit: int, counter):
     return board
 
 
-def main():
+def main(file: str):
     """
     Main function. Contains top-level logic.
     """
-    seats =  seat_layout_from_file("input.txt")
+    seats =  seat_layout_from_file(file)
     # Part 1 - counting adjacent neighbours
     final_iter = iter_board(seats, 4, lambda x,y: count_adjacent(x,y))
     counts = dict(zip(*np.unique(final_iter, return_counts=True)))
-    print(counts["#"])
+    print("Part 1:", counts["#"])
     # Part 2 - with Line of Sight
     final_iter = iter_board(seats, 5, lambda x,y: count_los(x,y))
     counts = dict(zip(*np.unique(final_iter, return_counts=True)))
-    print(counts["#"])
+    print("Part 2:", counts["#"])
 
-main()
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
+

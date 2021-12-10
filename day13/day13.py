@@ -32,11 +32,11 @@ def chinese_remainder_theorem(n, a):
         s += a_i * get_factor(p, n_i) * p
     return s % prod
 
-def main():
+def main(file: str):
     """
     Main function. Contains top-level logic.
     """
-    a, l =  seat_layout_from_file("input.txt")
+    a, l =  seat_layout_from_file(file)
     #print(a, l)
     # Part 1 - brute forced
     b = False
@@ -46,7 +46,7 @@ def main():
                 continue
             j = int(j)
             if i % j == 0:
-                print((i-a),(i-a)*j)
+                print("Part 1:", (i-a)*j)
                 b = True
                 break
         if b:
@@ -60,5 +60,10 @@ def main():
         if t != "x":
             n.append(int(t))
             a.append(int(t)-i)
-    print(chinese_remainder_theorem(n, a))
-main()
+    print("Part 2:", chinese_remainder_theorem(n, a))
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
+

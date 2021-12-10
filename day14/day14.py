@@ -47,11 +47,11 @@ def apply_mask_value(value: int, mask: str):
             value |= mask
     return value
 
-def main():
+def main(file: str):
     """
     Main function. Contains top-level logic.
     """
-    instructions = instructions_from_file("input.txt")
+    instructions = instructions_from_file(file)
     # Part 1 - value masking
     memory = {}
     for ins in instructions:
@@ -62,7 +62,7 @@ def main():
             address = int(re.split(r"(\[|\])", i)[2])
             memory[address] = apply_mask_value(int(val), mask)
             
-    print(sum(memory.values()))
+    print("Part 1:", sum(memory.values()))
     # Part 2 - address masking
     memory = {}
     for ins in instructions:
@@ -75,6 +75,11 @@ def main():
             addresses = apply_mask_address(address_init, mask)
             for address in addresses:
                 memory[address] = val
-    print(sum(memory.values()))
+    print("Part 2:", sum(memory.values()))
 
-main()
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
+

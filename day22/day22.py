@@ -79,15 +79,15 @@ def main(file: str):
             winnerdeck = p2deck
         winnerdeck.append(card1 if card1 > card2 else card2)
         winnerdeck.append(card1 if card1 < card2 else card2)
-    print(sum([i * winnerdeck[len(winnerdeck)-i] for i in range(1, len(winnerdeck) + 1)]))
+    print("Part 1:", sum([i * winnerdeck[len(winnerdeck)-i] for i in range(1, len(winnerdeck) + 1)]))
     # Part 2 simulation
     p1deck, p2deck = decks_from_file(file)
     _, winnerdeck = play_recursive_combat(p1deck, p2deck)
-    print(sum([i * winnerdeck[len(winnerdeck)-i] for i in range(1, len(winnerdeck) + 1)]))
+    print("Part 2:", sum([i * winnerdeck[len(winnerdeck)-i] for i in range(1, len(winnerdeck) + 1)]))
 
 
 if __name__ == "__main__":
-    print("-- test --")
+    print("-- TEST --")
     main("test.txt")
-    print("-- input --")
+    print("-- REAL --")
     main("input.txt")

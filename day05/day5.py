@@ -16,23 +16,22 @@ def boarding_passes_from_file(filepath : str):
             boarding_passes.append(sid)
     return boarding_passes
 
-def main():
+def main(file: str):
     """
     Main function. Contains primary logic.
     """
-    boarding_passes =  boarding_passes_from_file("input.txt")
+    boarding_passes =  boarding_passes_from_file(file)
     # Part 1
-    maximum = 0
-    for i, boarding_pass in enumerate(boarding_passes):
-        if boarding_pass > maximum:
-            maximum = boarding_pass
-    print(maximum)
+    print("Part 1:", max(boarding_passes))
     # Part 2
     for i in range(2**10-1):
         top_3 = i >> 7
         if top_3 == 7 or top_3 == 0:
             continue
         if i not in boarding_passes:
-            print("{} ({:010b})".format(i,i))
+            print("Part 2: {0} ({0:010b})".format(i))
 
-main()
+if __name__ == "__main__":
+    print("-- REAL --")
+    main("input.txt")
+

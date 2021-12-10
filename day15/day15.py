@@ -28,18 +28,18 @@ def second_before(l: list, i: int, num: int):
             return j+1
     return 0
 
-def main():
+def main(file: str):
     """
     Main function. Contains top-level logic.
     """
-    l = numbers_from_file("input.txt")[0]
+    l = numbers_from_file(file)[0]
     l = list(map(int, l))
     # Part 1 and 2
     # Part 2 is slow (takes about 30 seconds) but did the job
     i = -1
     before = {}
     second_before = {}
-    for limit in [2020, 30000000]:
+    for part, limit in enumerate([2020, 30000000]):
         while (i != limit):
             i += 1
             if i < len(l):
@@ -57,7 +57,12 @@ def main():
             else:
                 second_before[new] = before[new]
                 before[new] = i
-        print(last)
+        print(f"Part {part+1}: {last}")
 
 
-main()
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
+

@@ -29,16 +29,13 @@ def voting_groups_from_file(filepath : str):
         group_sets.append(group_set)
     return groups, group_sets
 
-def main():
+def main(file: str):
     """
     Main function. Contains primary logic.
     """
-    groups, group_sets =  voting_groups_from_file("input.txt")
+    groups, group_sets =  voting_groups_from_file(file)
     # Part 1
-    s = 0
-    for group in group_sets:
-        s += len(group)
-    print(s)
+    print(sum([len(g) for g in group_sets]))
     # Part 2
     s = 0
     for group in groups:
@@ -54,4 +51,9 @@ def main():
     print(s)
     # Part 2
 
-main()
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
+

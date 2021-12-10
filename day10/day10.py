@@ -30,17 +30,22 @@ def reduce_combinations(joltages : list):
     
     return accumulator[joltages[-1]]
 
-def main():
+def main(file: str):
     """
     Main function. Contains top-level logic.
     """
-    joltage =  ratings_from_file("input.txt")
+    joltages = ratings_from_file(file)
     # Part 1
-    diff = np.diff([0] + joltage + [joltages[-1] + 3])
+    diff = np.diff([0] + joltages + [joltages[-1] + 3])
     counts = dict(zip(*np.unique(diff, return_counts=True)))
-    print(counts[1] * counts[3])
+    print("Part 1:", counts[1] * counts[3])
     # Part 2
-    print(reduce_combinations(joltage))
+    print("Part 2:", reduce_combinations(joltages))
 
 
-main()
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
+

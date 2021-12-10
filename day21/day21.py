@@ -15,8 +15,8 @@ def foods_from_file(filepath: str):
             foods.append(line)
     return foods
 
-def main():
-    foodlist = foods_from_file("input.txt")
+def main(file: str):
+    foodlist = foods_from_file(file)
     options = {}
     ingredient_count = {}
     # Figure out what ingredient could contain which allergen
@@ -39,7 +39,7 @@ def main():
     for possibities in options.values():
         all_allergenics += possibities
     # Part 1
-    print(sum([ingredient_count[ingredient] if ingredient not in all_allergenics else 0 for ingredient in ingredient_count]))
+    print("Part 1:", sum([ingredient_count[ingredient] if ingredient not in all_allergenics else 0 for ingredient in ingredient_count]))
     # Part 2
     # Figure out exactly which allergen is in what ingredient
     allergens = {}
@@ -52,12 +52,13 @@ def main():
                     for remove_pos in options.values():
                         if ingredient in remove_pos:
                             remove_pos.remove(ingredient)
-        print("found:", allergens)
-        print("opens:",options)
 
-    print(",".join(allergens[allergen] for allergen in sorted(allergens)))
+    print("Part 2:", ",".join(allergens[allergen] for allergen in sorted(allergens)))
 
 
 
 if __name__ == "__main__":
-    main()
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")

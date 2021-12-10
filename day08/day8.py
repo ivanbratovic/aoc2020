@@ -45,18 +45,23 @@ def run_program(instructions : list, start : int = 0, acc : int = 0, ignore : in
 
     return acc, False
 
-def main():
+def main(file: str):
     """
     Main function. Contains primary logic.
     """
-    instructions = instructions_from_file("input.txt")
+    instructions = instructions_from_file(file)
     # Part 1
-    print(run_program(instructions)[0])
+    print("Part 1:", run_program(instructions)[0])
     # Part 2
     for ignore_ins in [idx for idx,ins in enumerate(instructions) if ins[0] == "jmp"]:
         acc, looped = run_program(instructions, ignore=ignore_ins)
         if not looped:
-            print(acc)
             break
+    print("Part 2:", acc)
 
-main()
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
+

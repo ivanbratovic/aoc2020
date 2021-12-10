@@ -1,35 +1,32 @@
 import itertools
 
-PREAMBLE_LEN = 25
-
 def ports_from_file(filepath : str):
     """
     Reads input from file and returns the list of XMAS
     ports as a list of numbers 
     """
-    ports = []
     with open(filepath, "r") as file:
-        [ports.append(int(line)) for line in file.readlines()]
-    return ports
+        return [int(line) for line in file.readlines()]
 
 
-def main():
+def main(file: str, preamble_len: int):
     """
     Main function. Contains primary logic.
     """
-    ports = ports_from_file("input.txt")
+    ports = ports_from_file(file)
     # Part 1
+    invalid = -1
     for i, n in enumerate(ports):
         # Just skip the preamble
-        if i < PREAMBLE_LEN:
+        if i < preamble_len:
             continue
-        candidates = ports[i - PREAMBLE_LEN:i]
+        candidates = ports[i - preamble_len:i]
         # Check if current number is sum of any
         # two out of PREAMBLE_LEN previous ports
         if n not in [x + y for x,y in itertools.combinations(candidates, 2)]:
             invalid = n
             break
-    print(invalid)
+    print("Part 1:", invalid)
     # Part 2
     # Check all possible ranges for the invalid number
     solution = 0
@@ -46,7 +43,12 @@ def main():
         if solution > 0:
             # We found the task solution
             break
-    print(solution)
+    print("Part 2:", solution)
 
-main()
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt", 5)
+    print("-- REAL --")
+    main("input.txt", 25)
+
     

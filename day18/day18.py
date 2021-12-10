@@ -40,14 +40,19 @@ def calculcate_total(expr: list, part1: bool):
         total += eval("".join(line)).v
     return total
 
-def main():
+def main(file: str):
     """
     Main function. Contains top-level logic.
     """
-    expr = expr_from_file("input.txt")
+    expr = expr_from_file(file)
     # Part 1 - mul=add
-    print(calculcate_total(expr, True))
+    print("Part 1:", calculcate_total(expr, True))
     # Part 2 - add>mul
-    print(calculcate_total(expr, False))
+    print("Part 2:", calculcate_total(expr, False))
 
-main()
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
+

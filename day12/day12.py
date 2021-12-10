@@ -38,7 +38,7 @@ def run_ship(instructions: list):
         if direction == "R":
             facing = dirs[(dirs.index(facing)+(amount//90))%4]
 
-    print(abs(x)+abs(y))
+    print("Part 1:", abs(x)+abs(y))
 
 def run_with_waypoint(instructions: list):
     ship_x, ship_y = 0, 0
@@ -62,16 +62,21 @@ def run_with_waypoint(instructions: list):
                 way_x, way_y = -way_y, way_x
 
 
-    print(abs(ship_x) + abs(ship_y))
+    print("Part 2:", abs(ship_x) + abs(ship_y))
 
-def main():
+def main(file: str):
     """
     Main function. Contains top-level logic.
     """
-    instructions = instructions_from_file("input.txt")
+    instructions = instructions_from_file(file)
     # Part 1
     run_ship(instructions)
     # Part 2 - with Waypoint
     run_with_waypoint(instructions)
 
-main()
+if __name__ == "__main__":
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
+

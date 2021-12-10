@@ -97,11 +97,11 @@ def tiles_from_file(filepath: str):
                 rows.append(line)
     return tiles
 
-def main():
+def main(file: str):
     """
     Main function. Contains top-level logic.
     """
-    tiles = tiles_from_file("input.txt")
+    tiles = tiles_from_file(file)
 
     # PART 1 - The whole pattern is not important
     # Find 4 tiles that don't match exactly 4 others
@@ -111,9 +111,12 @@ def main():
         aligned_tiles = sum([1 if tile.aligns(t) else 0 for t in tiles])
         if aligned_tiles == 2:
             corner_tiles.append(tile.id)
-    print(corner_tiles)
-    print(np.prod(corner_tiles))
+    #print(corner_tiles)
+    print("Part 1:", np.prod(corner_tiles))
 
 
 if __name__ == "__main__":
-    main()
+    print("-- TEST --")
+    main("test.txt")
+    print("-- REAL --")
+    main("input.txt")
